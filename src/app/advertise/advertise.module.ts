@@ -11,7 +11,7 @@ import { AdvertiseSharedModule } from './shared/advertise-shared.module';
   ],
   imports: [
     CommonModule,
-    AdvertiseSharedModule
+    AdvertiseSharedModule,
   ],
   providers: [
     AdvertiseFooterService

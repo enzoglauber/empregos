@@ -1,1 +1,21 @@
 @import "../../advertise.component.scss";
+
+.slider {
+    position: relative;
+    .wrap {
+        form {
+            background-color: rgba( $orange, .7 ) ;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+    }
+    .owl-item {
+        .item {
+            .image {
+                background-position: center center;
+                height: 500px;
+            }
+        }
+    }
+}
