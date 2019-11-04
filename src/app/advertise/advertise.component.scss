@@ -25,3 +25,11 @@
 .text-gray3 {
     color: $gray3;    
 }
+.btn-advertise {
+    background-color: $blue;
+    border: $blue;
+    padding: 10px 30px;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.3s ease;
+}

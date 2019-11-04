@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AdvertiseService } from '../advertise.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-advertise-register-form',
@@ -28,21 +30,18 @@ export class AdvertiseRegisterFormComponent implements OnInit {
     }
   }
   
-  slides = [
-    {
-      image: "assets/slider/1.jpg"
-    },
-    {
-      image: "assets/slider/2.jpg"
-    },
-    {
-      image: "assets/slider/3.jpg"
-    }
-  ]
+  slides = [];
+  responsibilities$: Observable<any>;
+  cities$: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private advertiseService: AdvertiseService
+  ) { }
 
   ngOnInit() {
+    this.slides = this.advertiseService.getSlides();
+    this.responsibilities$ = this.advertiseService.getResponsibilities();
+    this.cities$ = this.advertiseService.getCities();
   }
 
 }

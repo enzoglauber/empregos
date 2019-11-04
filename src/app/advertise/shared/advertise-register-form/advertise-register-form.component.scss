@@ -4,10 +4,21 @@
     position: relative;
     .wrap {
         form {
-            background-color: rgba( $orange, .7 ) ;
+            background-color: rgba( $orange, 0.85 ) ;
             position: absolute;
             top: 0;
             z-index: 1;
+            color: white;
+            padding: 25px 35px;
+
+            .form-control {
+                padding: 25px 20px;
+                font-size: 14px;
+                color: #001C49;
+                border: 0;
+                margin: 20px 0;
+                border-radius: 30px;
+            }
         }
     }
     .owl-item {
