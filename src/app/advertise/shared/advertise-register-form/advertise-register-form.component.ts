@@ -13,11 +13,13 @@ export class AdvertiseRegisterFormComponent implements OnInit {
     responsibility: 0,
     city: 0,
   };
+
   carouselOptions = {
     margin: 0,
     nav: false,
     dots: false,
     loop: true,
+    autoplay: true,
     items: 1,
     responsiveClass: true,
     // navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],

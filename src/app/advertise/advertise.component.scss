@@ -1,5 +1,8 @@
 @import "./advertise.variables.scss" ;
 
+* {
+    font-family: 'Roboto', sans-serif;
+}
 .bg-orange {
     background-color: $orange;
 }
@@ -20,7 +23,8 @@
 }
 
 .text-blue {
-    color: $blue;    
+    color: $blue;
+    font-family: 'Lato', sans-serif;
 }
 .text-gray3 {
     color: $gray3;    
