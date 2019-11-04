@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { OwlModule } from 'ngx-owl-carousel';
 
@@ -7,6 +6,7 @@ import { AdvertiseFooterComponent } from './advertise-footer/advertise-footer.co
 import { AdvertiseHeaderComponent } from './advertise-header/advertise-header.component';
 import { AdvertiseRegisterFormComponent } from './advertise-register-form/advertise-register-form.component';
 import { AdvertiseService } from './advertise.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { AdvertiseService } from './advertise.service';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
+    FormsModule,
     OwlModule
   ],
   exports: [

@@ -9,7 +9,10 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class AdvertiseRegisterFormComponent implements OnInit {
-  
+  advertise: any = {
+    responsibility: 0,
+    city: 0,
+  };
   carouselOptions = {
     margin: 0,
     nav: false,

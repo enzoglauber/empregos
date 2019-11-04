@@ -1,13 +1,27 @@
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { City } from './interfaces/city';
+import { Responsibility } from './interfaces/responsibility';
+
+@Injectable()
 export class AdvertiseService {
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
-  private URL_API = "https://www.empregos.com.br/user-controls/hdlSugest2.ashx?t=CE&term=";
+  private URL_API = "https://www.empregos.com.br/user-controls/hdlSugest2.ashx?t=";
+
+  getResponsibilities(): Observable<Array<Responsibility>> {
+    return this.getApi('C', 'cargo')
+  }
+
+  getCities(): Observable<Array<City>> {
+    return this.getApi('CE', 'cidade')
+  }
 
   getSlides(): Array<any> {
     return [
@@ -23,15 +37,7 @@ export class AdvertiseService {
     ];
   }
 
-  getResponsibilities(): Observable<any> {
-    return this.getApi('cargo')
-  }
-
-  getCities(): Observable<any> {
-    return this.getApi('cidade')
-  }
-
-  private getApi ( term: string ): Observable<any> {
-    return this.http.get<any>(`${this.URL_API}${term}`).pipe(map( (data: any) => data ))
+  private getApi ( type: string, term: string ): Observable<Array<City|Responsibility>> {
+    return this.http.get<any>(`${this.URL_API}${type}&term=${term}`).pipe(map( (data: Array<City|Responsibility>) => data ))
   }
 }
