@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AdvertiseService } from '../advertise.service';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CoreService } from '../utils/core.service';
 
 @Component({
   selector: 'app-advertise-register-form',
@@ -39,7 +40,8 @@ export class AdvertiseRegisterFormComponent implements OnInit {
   cities$: Observable<any>;
 
   constructor(
-    private advertiseService: AdvertiseService
+    private advertiseService: AdvertiseService,
+    private coreService: CoreService
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,7 @@ export class AdvertiseRegisterFormComponent implements OnInit {
   save (): void {
     this.isSubmitted = true;
     if(this.form.invalid){
+      this.coreService.verifyForm(this.form);
       return;
     }
     console.log('Enviando dados', this.form.value)

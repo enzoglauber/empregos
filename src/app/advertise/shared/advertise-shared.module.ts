@@ -7,6 +7,7 @@ import { AdvertiseFooterComponent } from './advertise-footer/advertise-footer.co
 import { AdvertiseHeaderComponent } from './advertise-header/advertise-header.component';
 import { AdvertiseRegisterFormComponent } from './advertise-register-form/advertise-register-form.component';
 import { AdvertiseService } from './advertise.service';
+import { CoreService } from './utils/core.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdvertiseService } from './advertise.service';
     AdvertiseFooterComponent, AdvertiseHeaderComponent, AdvertiseRegisterFormComponent
   ],
   providers: [
-    AdvertiseService
+    AdvertiseService, 
+    CoreService
   ]
 })
 export class AdvertiseSharedModule { }
