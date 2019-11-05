@@ -4,40 +4,47 @@
       <div class="image" [ngStyle]="{'background-image': 'url(' + slide.image +')'}"></div>
     </div>
   </owl-carousel>
+  
   <div class="wrap">
     <div class="container-fluid">
-      <form class="offset-1 offset-md-2 col-9 col-sm-9 col-md-5 col-lg-3 h-100">
-        <h2 class="text-blue"><b>Anuncie</b> seu currículo</h2>
-        <div class="form-group">
-          <input type="text" class="form-control" id="name" aria-describedby="email" placeholder="Nome">
+      <div class="row">
+        <div class="offset-0 offset-md-0 offset-xl-2 col-10 col-sm-9 col-md-6 col-lg-4 col-xl-3 h-100">
+          <form [formGroup]="form" (ngSubmit)="save()"  novalidate>
+            <h2 class="text-blue"><b>Anuncie</b> seu currículo</h2>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="name" placeholder="Nome" [ngClass]="{ 'is-invalid': isSubmitted && formControls.name.errors }">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" formControlName="email" placeholder="Email" [ngClass]="{ 'is-invalid': isSubmitted && formControls.email.errors }">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="cellphone" placeholder="Celular" [ngClass]="{ 'is-invalid': isSubmitted && formControls.cellphone.errors }">
+            </div>
+            <div class="form-group">
+              <select class="form-control" formControlName="city" [ngClass]="{ 'is-invalid': isSubmitted && (formControls.city.errors || formControls.city.value === 0) }">
+                <option value="0" disabled selected>Cidades</option>
+                <option *ngFor="let city of cities$ | async" [ngValue]="city.Codigo">
+                  {{city.Descricao}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" formControlName="responsibility" [ngClass]="{ 'is-invalid': isSubmitted && (formControls.name.responsibility || formControls.responsibility.value === 0) }">
+                <option value="0" disabled selected>Cargos</option>
+                <option *ngFor="let responsibility of responsibilities$ | async" [ngValue]="responsibility.Codigo">
+                  {{responsibility.Descricao}}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-advertise">
+              Continuar cadastro <i class="fa fa-angle-right"></i> 
+            </button>
+          </form>
         </div>
-        <div class="form-group">
-          <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email">
+        <div class="offset-1 offset-md-2 col-3 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
+          <h2 class="text-blue-inverted d-none d-md-block"> Seu emprego <b>mais perto</b> de você</h2>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" id="cellphone" aria-describedby="email" placeholder="Celular">
-        </div>
-        <div class="form-group">
-          <select class="form-control" name="city" id="city" [(ngModel)]="advertise.city">
-            <option value="0" disabled selected>Cidades</option>
-            <option *ngFor="let city of cities$ | async" [ngValue]="city.Codigo">
-              {{city.Descricao}}
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <select class="form-control" name="responsibility" id="responsibility" [(ngModel)]="advertise.responsibility">
-            <option value="0" disabled selected>Cargos</option>
-            <option *ngFor="let responsibility of responsibilities$ | async" [ngValue]="responsibility.Codigo">
-              {{responsibility.Descricao}}
-            </option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-primary btn-advertise">
-          Continuar cadastro <i class="fa fa-angle-right"></i> 
-        </button>
-      </form>
+      </div>
     </div>
   </div>
 </section>
