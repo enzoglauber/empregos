@@ -50,7 +50,7 @@ export class AdvertiseRegisterFormComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl(null, [Validators.required] ), 
       email: new FormControl(null, [Validators.required] ), 
-      cellphone: new FormControl(null, [Validators.required] ), 
+      cellphone: new FormControl(null, [Validators.required, Validators.pattern('^\\d*$')] ), 
       city: new FormControl(0, [Validators.required] ), 
       responsibility: new FormControl(0, [Validators.required] ), 
     }, { updateOn: 'blur' });
